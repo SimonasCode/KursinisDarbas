@@ -4,6 +4,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,13 +40,57 @@ namespace Tests
             Assert.AreEqual("butai surasta šiose kategorijose", SkelbiuHomePage.GetSearchResultsText() + " surasta šiose kategorijose");
         }
 
-
-
-        [TearDown]
-        public void TearDown()
+        [Test]
+        public void LoginInWebsite()
         {
-            Driver.CloseDriver();
+            string phoneNumber = "+37062578014";
+            string password = "Ihateprogramming";
+
+            SkelbiuHomePage.WaitForElementToBeClickableAndClickAcceptCookiesButton();
+            // Click login button
+            SkelbiuHomePage.ClickLoginButton();
+            // Wait for the website to be loaded
+            SkelbiuHomePage.WaitForElementToBeClickableAndClickOnLoginNameModal();
+            // Enter username
+            SkelbiuHomePage.EnterphoneNumber(phoneNumber);
+            // Enter password
+            SkelbiuHomePage.EnterPassword(password);
+            // Click  button
+            SkelbiuHomePage.ClickLoginInToAccountButton();
+
+           // Assert.IsTrue(SkelbiuHomePage.IsUserLoggedIn(), "User is not logged in");
         }
+
+        [Test]
+        public void SearchByCategoryAnnouncement()
+        {
+            SkelbiuHomePage.WaitForElementToBeClickableAndClickAcceptCookiesButton();
+            SkelbiuHomePage.ClickOnTransportSection();
+            SkelbiuHomePage.ClickOnCarsButton();
+            SkelbiuHomePage.ClickOnSubaruButton();
+            SkelbiuHomePage.ClickOnBRZButton();
+        }
+
+        [Test]
+        public void SearchByCategoryWithCriteria()
+        {
+            SkelbiuHomePage.WaitForElementToBeClickableAndClickAcceptCookiesButton();
+            SkelbiuHomePage.ClickOnApartmentsOption();
+            SkelbiuHomePage.ClickOnPriceFieldFrom();
+            SkelbiuHomePage.ClickOnPriceFieldTo();
+            SkelbiuHomePage.ClickChooseCityFromFilter();
+            SkelbiuHomePage.
+
+        }
+      
+
+
+
+        //[TearDown]
+        //public void Teardown()
+        //{
+        //    Driver.CloseDriver();
+        //}
 
 
 

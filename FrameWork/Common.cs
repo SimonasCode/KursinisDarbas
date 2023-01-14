@@ -5,6 +5,7 @@ using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -60,5 +61,13 @@ namespace FrameWork
             IWebElement element = GetElement(locator);
             element.SendKeys(Keys.Enter);
         }
+
+        //internal static void EnterPassword(string locator, string password)
+        //{
+        //    IWebElement element = GetElement(locator);
+        //    WaitForElementToBeClickable(element);
+        //    element.Click();
+        //   // element.SendKeys(password);
+        //}
     }
 }
