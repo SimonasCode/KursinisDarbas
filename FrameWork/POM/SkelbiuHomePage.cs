@@ -162,7 +162,7 @@ namespace FrameWork.POM
         //    Common.ClickEnterButton(minRoomOption);
         //}
 
-        public static void SelectMinRoomOption()
+        public static void ClickMinRoomOption()
         {
             Common.ClickElement(minRoomOption);
         }
@@ -176,7 +176,7 @@ namespace FrameWork.POM
         {
             Common.ClickElement(filtrateButton); 
         }
-        public static void CheckIfAccouncmentListIsVisible()
+        public static void CheckIfAnnouncementListIsVisible()
         {
             Common.WaitForElementToBeVisible(announcmentList);
         }

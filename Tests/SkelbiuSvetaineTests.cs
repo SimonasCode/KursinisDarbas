@@ -87,7 +87,7 @@ namespace Tests
             SkelbiuHomePage.ClickChooseCityFromFilter();
             SkelbiuHomePage.ClickOnCity();
             SkelbiuHomePage.ClickOnSaveOptionField();
-            SkelbiuHomePage.SelectMinRoomOption();
+            SkelbiuHomePage.ClickMinRoomOption();
             SkelbiuHomePage.ClickMinRoomsButton();
             SkelbiuHomePage.ClickFiltrateButton();
             Assert.AreEqual("butai, kaunas, kaina, €: 20000 - 60000, kamb. sk.: nuo 2", SkelbiuHomePage.ApartmentsSearchResults());
@@ -95,14 +95,14 @@ namespace Tests
         }
 
         [Test]
-        public void CheckIfItWorksToReturnToPreviousPageFromWishListIfYouAreNotLoggedIn()
+        public void CheckIfItWorksToReturnToPreviousPageFromWishListWihoutLoginToTheAccount()
         {
             SkelbiuHomePage.WaitForElementToBeClickableAndClickAcceptCookiesButton();
             SkelbiuHomePage.ClickOnComputersButton();
             SkelbiuHomePage.ClickOnHeartToRememberAnnouncement();
             SkelbiuHomePage.ClickToRememberedAnnouncements();
             SkelbiuHomePage.ClickReturnToThePreviousPage();
-            SkelbiuHomePage.CheckIfAccouncmentListIsVisible();
+            SkelbiuHomePage.CheckIfAnnouncementListIsVisible();
         }
 
         [TearDown]
