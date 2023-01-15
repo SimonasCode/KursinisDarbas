@@ -1,6 +1,7 @@
 ﻿using FrameWork;
 using FrameWork.POM;
 using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,8 +58,9 @@ namespace Tests
             SkelbiuHomePage.EnterPassword(password);
             // Click  button
             SkelbiuHomePage.ClickLoginInToAccountButton();
+            SkelbiuHomePage.ClickToClosePostServices();
+            Assert.AreEqual("Vartotojas: +37062578014", SkelbiuHomePage.LoggedInInfo());
 
-           // Assert.IsTrue(SkelbiuHomePage.IsUserLoggedIn(), "User is not logged in");
         }
 
         [Test]
@@ -69,30 +71,48 @@ namespace Tests
             SkelbiuHomePage.ClickOnCarsButton();
             SkelbiuHomePage.ClickOnSubaruButton();
             SkelbiuHomePage.ClickOnBRZButton();
+            Assert.AreEqual("brz, subaru", SkelbiuHomePage.SearchSubaruList());
         }
 
         [Test]
         public void SearchByCategoryWithCriteria()
         {
+            string priceFrom = "20000";
+            string priceTo = "60000";
+
             SkelbiuHomePage.WaitForElementToBeClickableAndClickAcceptCookiesButton();
             SkelbiuHomePage.ClickOnApartmentsOption();
-            SkelbiuHomePage.ClickOnPriceFieldFrom();
-            SkelbiuHomePage.ClickOnPriceFieldTo();
+            SkelbiuHomePage.ClickOnPriceFieldFromAndEnterPrice(priceFrom);
+            SkelbiuHomePage.ClickOnPriceFieldToAndEnterPrice(priceTo);
             SkelbiuHomePage.ClickChooseCityFromFilter();
-            SkelbiuHomePage.
+            SkelbiuHomePage.ClickOnCity();
+            SkelbiuHomePage.ClickOnSaveOptionField();
+            SkelbiuHomePage.SelectMinRoomOption();
+            SkelbiuHomePage.ClickMinRoomsButton();
+            SkelbiuHomePage.ClickFiltrateButton();
+            Assert.AreEqual("butai, kaunas, kaina, €: 20000 - 60000, kamb. sk.: nuo 2", SkelbiuHomePage.ApartmentsSearchResults());
 
         }
-      
 
+        [Test]
+        public void CheckIfItWorksToReturnToPreviousPageFromWishListIfYouAreNotLoggedIn()
+        {
+            SkelbiuHomePage.WaitForElementToBeClickableAndClickAcceptCookiesButton();
+            SkelbiuHomePage.ClickOnComputersButton();
+            SkelbiuHomePage.ClickOnHeartToRememberAnnouncement();
+            SkelbiuHomePage.ClickToRememberedAnnouncements();
+            SkelbiuHomePage.ClickReturnToThePreviousPage();
+            SkelbiuHomePage.CheckIfAccouncmentListIsVisible();
+        }
 
-
-        //[TearDown]
-        //public void Teardown()
-        //{
-        //    Driver.CloseDriver();
-        //}
-
-
-
-    }
+        [TearDown]
+        public virtual void TearDown()
+        {
+            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+            {
+                Driver.TakeScreenshot(TestContext.CurrentContext.Test.FullName);
+            }
+            Driver.CloseDriver();
+        }
+    }    
 }

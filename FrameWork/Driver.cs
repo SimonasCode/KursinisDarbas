@@ -2,10 +2,13 @@
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace FrameWork
 {
@@ -35,41 +38,17 @@ namespace FrameWork
         {
             driver.Quit();
         }
+
+        public static void TakeScreenshot(string testMethodName)
+        {
+            DateTime now = DateTime.Now;
+            string formatedNowTime = now.ToString("yyyy-MM-dd-HH-mm-ss");
+            string screenshotsDirectoryPath = $"C:/Users/PC/Pictures/TestResults/TestsTime-{formatedNowTime}";
+            string screenshotName = $"{screenshotsDirectoryPath}\\{testMethodName}-.png";
+
+            Directory.CreateDirectory(screenshotsDirectoryPath);
+            Screenshot screenshot = ((ITakesScreenshot)driver).GetScreenshot();
+            screenshot.SaveAsFile(screenshotName, ScreenshotImageFormat.Png);
+        }
     }
 }
-
-//public class Driver
-//{
-//    public static void Initialize()
-//    {
-//        ChromeOptions options = new ChromeOptions();
-//        //options.AddArgument("disable-notifications");
-//        //options.AddArgument("start-maximized");
-//        //options.AddArgument("headless");
-//        //options.AddArgument("window-size=1920,1080");
-
-
-//        //driver.Value = new ChromeDriver(options);
-//    }
-
-//    private static IWebDriver driver;
-
-//    public static IWebDriver GetDtiver()
-//    {
-//        return driver;
-//    }
-
-//    public static void CreateDriver()
-//    {
-//        driver = new ChromeDriver();
-//    }
-
-//    public static void CloseDriver()
-//    {
-//        driver.Quit();
-//    }
-
-//    public static void OpenPage(string url)
-//    {
-//        driver.Navigate().GoToUrl(url);
-//    }
