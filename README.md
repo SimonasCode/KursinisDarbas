@@ -1,4 +1,4 @@
-﻿# Baigiamasis darbas "Skelbiu.lt"
+﻿# Baigiamasis darbas "Skelbiu.lt - https://www.skelbiu.lt"
 ### 1. Close Cookies
 * Open website https://www.skelbiu.lt/
 * Wait until cookies table appear

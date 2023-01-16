@@ -109,11 +109,28 @@ namespace Tests
         [TearDown]
         public virtual void TearDown()
         {
-            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
-            {
-                Driver.TakeScreenshot(TestContext.CurrentContext.Test.FullName);
-            }
             Driver.CloseDriver();
         }
     }    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+//[TearDown]
+//public virtual void TearDown()
+//{
+//    if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+//    {
+//        Driver.TakeScreenshot(TestContext.CurrentContext.Test.FullName);
+//    }
+//    Driver.CloseDriver();
+//}

@@ -70,19 +70,5 @@ namespace FrameWork
             IWebElement element = GetElement(locator);
             element.SendKeys(Keys.Enter);
         }
-
-        //internal static void WaitForElementToBeVisible(string locator)
-        //{
-        //    WebDriverWait wait = new WebDriverWait(Driver.GetDriver(), TimeSpan.FromSeconds(15));
-        //    wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(locator)));
-        //}
-
-        //internal static void EnterPassword(string locator, string password)
-        //{
-        //    IWebElement element = GetElement(locator);
-        //    WaitForElementToBeClickable(element);
-        //    element.Click();
-        //   // element.SendKeys(password);
-        //}
     }
 }
