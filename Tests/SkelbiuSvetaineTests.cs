@@ -9,10 +9,11 @@ using System.Security;
 using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
+using Tests.BaseClasses;
 
 namespace Tests
 {
-    internal class SkelbiuSvetaineTests
+    internal class SkelbiuSvetaineTests : BaseTest
     {
         [SetUp]
         public void SetUp()
