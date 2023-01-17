@@ -1,4 +1,4 @@
-using FrameWork.POM;
+﻿using FrameWork.POM;
 using NUnit.Framework;
 using Tests.BaseClasses;
 
@@ -81,16 +81,6 @@ namespace Tests
             SkelbiuHomePage.ClickToRememberedAnnouncements();
             SkelbiuHomePage.ClickReturnToThePreviousPage();
             SkelbiuHomePage.CheckIfAnnouncementListIsVisible();
-        }
-
-        [TearDown]
-        public virtual void TearDown()
-        {
-            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
-            {
-                Driver.TakeScreenshot(TestContext.CurrentContext.Test.FullName);
-            }
-            Driver.CloseDriver();
         }
     }
 }
