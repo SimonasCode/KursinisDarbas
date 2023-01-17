@@ -9,9 +9,8 @@ namespace Tests
     internal class SkelbiuSvetaineTests : BaseTest
     {
         [SetUp]
-        public void SetUp()
+        public void Open()
         {
-            Driver.Initialize();
             SkelbiuHomePage.Open();
         }
 
