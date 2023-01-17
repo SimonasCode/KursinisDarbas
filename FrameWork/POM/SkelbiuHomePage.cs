@@ -37,6 +37,7 @@
         public static void Open()
         {
             Driver.OpenPage(url);
+            WaitForElementToBeClickableAndClickAcceptCookiesButton();
         }
 
         public static void WaitForElementToBeClickableAndClickAcceptCookiesButton()

@@ -1,7 +1,5 @@
-﻿using FrameWork;
 using FrameWork.POM;
 using NUnit.Framework;
-using NUnit.Framework.Interfaces;
 using Tests.BaseClasses;
 
 namespace Tests
@@ -17,14 +15,13 @@ namespace Tests
         [Test]
         public void CheckIfCookiesCanBeAccepted()
         {
-            SkelbiuHomePage.WaitForElementToBeClickableAndClickAcceptCookiesButton();
+            
             SkelbiuHomePage.WaitForCookiesModalNotToBeVisible();
         }
 
         [Test]
         public void CheckIfSearchReturnResults()
         {
-            SkelbiuHomePage.WaitForElementToBeClickableAndClickAcceptCookiesButton();
             SkelbiuHomePage.SearchByPhrase("automobiliai");
             Assert.AreEqual("automobiliai surasta šiose kategorijose", SkelbiuHomePage.GetSearchResultsText() + " surasta šiose kategorijose");
             SkelbiuHomePage.SearchByPhrase("butai");
@@ -37,7 +34,6 @@ namespace Tests
             string phoneNumber = "+37062578014";
             string password = "Ihateprogramming";
 
-            SkelbiuHomePage.WaitForElementToBeClickableAndClickAcceptCookiesButton();
             SkelbiuHomePage.ClickLoginButton();
             SkelbiuHomePage.WaitForElementToBeClickableAndClickOnLoginNameModal();
             SkelbiuHomePage.EnterphoneNumber(phoneNumber);
@@ -51,7 +47,6 @@ namespace Tests
         [Test]
         public void SearchByCategoryAnnouncement()
         {
-            SkelbiuHomePage.WaitForElementToBeClickableAndClickAcceptCookiesButton();
             SkelbiuHomePage.ClickOnTransportSection();
             SkelbiuHomePage.ClickOnCarsButton();
             SkelbiuHomePage.ClickOnSubaruButton();
@@ -65,7 +60,6 @@ namespace Tests
             string priceFrom = "20000";
             string priceTo = "60000";
 
-            SkelbiuHomePage.WaitForElementToBeClickableAndClickAcceptCookiesButton();
             SkelbiuHomePage.ClickOnApartmentsOption();
             SkelbiuHomePage.ClickOnPriceFieldFromAndEnterPrice(priceFrom);
             SkelbiuHomePage.ClickOnPriceFieldToAndEnterPrice(priceTo);
@@ -82,7 +76,6 @@ namespace Tests
         [Test]
         public void CheckIfItWorksToReturnToPreviousPageFromWishListWihoutLoginToTheAccount()
         {
-            SkelbiuHomePage.WaitForElementToBeClickableAndClickAcceptCookiesButton();
             SkelbiuHomePage.ClickOnComputersButton();
             SkelbiuHomePage.ClickOnHeartToRememberAnnouncement();
             SkelbiuHomePage.ClickToRememberedAnnouncements();
