@@ -18,9 +18,9 @@
 * Click "login" button
 * Wait for the website to be loaded
 * Click on "username" field
-* Enter "+37062578014"
+* Enter "***********"
 * Click on "password" field
-* Enter "Ihateprogramming"
+* Enter "***********"
 * Click login in to account button
 * Click to close post services
 * Check if result matches the search
