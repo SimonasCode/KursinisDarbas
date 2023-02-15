@@ -56,7 +56,6 @@
     <Compile Include="Common.cs" />
     <Compile Include="Driver.cs" />
     <Compile Include="POM\SkelbiuHomePage.cs" />
-    <Compile Include="POM\TestAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

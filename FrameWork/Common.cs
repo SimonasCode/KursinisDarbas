@@ -1,14 +1,8 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+
 
 namespace FrameWork
 {
@@ -19,7 +13,6 @@ namespace FrameWork
             return Driver.GetDriver().FindElement(By.XPath(locator));
         }
 
-        // WAITS
         internal static void WaitForElementToBeClickable(IWebElement element)
         {
             WebDriverWait wait = new WebDriverWait(Driver.GetDriver(), TimeSpan.FromSeconds(15));
@@ -47,7 +40,6 @@ namespace FrameWork
             
         }
 
-        // ACTIONS
         internal static void EnterText(string locator, string text)
         {
             // Getting element one time and assigning it to a variable solves the issue of looking for the same element multiple times (saves time, improves performance)

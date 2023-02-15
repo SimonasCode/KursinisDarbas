@@ -1,14 +1,5 @@
-﻿using FrameWork;
-using FrameWork.POM;
+﻿using FrameWork.POM;
 using NUnit.Framework;
-using NUnit.Framework.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security;
-using System.Security.AccessControl;
-using System.Text;
-using System.Threading.Tasks;
 using Tests.BaseClasses;
 
 namespace Tests
@@ -16,29 +7,24 @@ namespace Tests
     internal class SkelbiuSvetaineTests : BaseTest
     {
         [SetUp]
-        public void SetUp()
+        public void Open()
         {
-            Driver.Initialize();
             SkelbiuHomePage.Open();
         }
 
         [Test]
         public void CheckIfCookiesCanBeAccepted()
         {
-            SkelbiuHomePage.WaitForElementToBeClickableAndClickAcceptCookiesButton();
+            
             SkelbiuHomePage.WaitForCookiesModalNotToBeVisible();
         }
 
         [Test]
         public void CheckIfSearchReturnResults()
         {
-            SkelbiuHomePage.WaitForElementToBeClickableAndClickAcceptCookiesButton();
-            // Enter text to search and click Enter
             SkelbiuHomePage.SearchByPhrase("automobiliai");
-            // Check if results shown matches search phrase
             Assert.AreEqual("automobiliai surasta šiose kategorijose", SkelbiuHomePage.GetSearchResultsText() + " surasta šiose kategorijose");
             SkelbiuHomePage.SearchByPhrase("butai");
-            // Check if results shown matches search phrase
             Assert.AreEqual("butai surasta šiose kategorijose", SkelbiuHomePage.GetSearchResultsText() + " surasta šiose kategorijose");
         }
 
@@ -48,16 +34,10 @@ namespace Tests
             string phoneNumber = "+37062578014";
             string password = "Ihateprogramming";
 
-            SkelbiuHomePage.WaitForElementToBeClickableAndClickAcceptCookiesButton();
-            // Click login button
             SkelbiuHomePage.ClickLoginButton();
-            // Wait for the website to be loaded
             SkelbiuHomePage.WaitForElementToBeClickableAndClickOnLoginNameModal();
-            // Enter username
             SkelbiuHomePage.EnterphoneNumber(phoneNumber);
-            // Enter password
             SkelbiuHomePage.EnterPassword(password);
-            // Click  button
             SkelbiuHomePage.ClickLoginInToAccountButton();
             SkelbiuHomePage.ClickToClosePostServices();
             Assert.AreEqual("Vartotojas: +37062578014", SkelbiuHomePage.LoggedInInfo());
@@ -67,7 +47,6 @@ namespace Tests
         [Test]
         public void SearchByCategoryAnnouncement()
         {
-            SkelbiuHomePage.WaitForElementToBeClickableAndClickAcceptCookiesButton();
             SkelbiuHomePage.ClickOnTransportSection();
             SkelbiuHomePage.ClickOnCarsButton();
             SkelbiuHomePage.ClickOnSubaruButton();
@@ -81,7 +60,6 @@ namespace Tests
             string priceFrom = "20000";
             string priceTo = "60000";
 
-            SkelbiuHomePage.WaitForElementToBeClickableAndClickAcceptCookiesButton();
             SkelbiuHomePage.ClickOnApartmentsOption();
             SkelbiuHomePage.ClickOnPriceFieldFromAndEnterPrice(priceFrom);
             SkelbiuHomePage.ClickOnPriceFieldToAndEnterPrice(priceTo);
@@ -98,22 +76,11 @@ namespace Tests
         [Test]
         public void CheckIfItWorksToReturnToPreviousPageFromWishListWihoutLoginToTheAccount()
         {
-            SkelbiuHomePage.WaitForElementToBeClickableAndClickAcceptCookiesButton();
             SkelbiuHomePage.ClickOnComputersButton();
             SkelbiuHomePage.ClickOnHeartToRememberAnnouncement();
             SkelbiuHomePage.ClickToRememberedAnnouncements();
             SkelbiuHomePage.ClickReturnToThePreviousPage();
             SkelbiuHomePage.CheckIfAnnouncementListIsVisible();
-        }
-
-        [TearDown]
-        public virtual void TearDown()
-        {
-            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
-            {
-                Driver.TakeScreenshot(TestContext.CurrentContext.Test.FullName);
-            }
-            Driver.CloseDriver();
         }
     }
 }
